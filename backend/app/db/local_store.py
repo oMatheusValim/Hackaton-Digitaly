@@ -14,7 +14,18 @@ def _min_date(*vals):
 
 def load_patients():
     global _patients
-    df = pd.read_csv(CSV_PATH)
+    
+    # leitura do arquivo csv
+    df = pd.read_csv(
+    CSV_PATH,
+    sep=None,            # <- autodetecta ; , ou \t
+    engine="python",
+    encoding="utf-8-sig" # trata BOM
+    )
+    
+    # só por segurança: remove espaços/bom nos nomes das colunas
+    df.columns = [str(c).strip() for c in df.columns]
+    
     # normaliza datas
     for col in ["diagnostico_data","cirurgia_data","quimioterapia_inicio","radioterapia_inicio","ultima_consulta","proxima_consulta"]:
         df[col] = pd.to_datetime(df[col], errors="coerce", dayfirst=True)

@@ -16,7 +16,7 @@ class CareInfo(BaseModel):
     next_visit: Optional[date] = None      # proxima_consulta
     status: Optional[str] = None           # status_jornada
 
-class Flags(BaseModel):
+class Flags(BaseModel): ##### NÃO FOI CONFIGURADO CERTO (SÓ TA EM BOOLEANO)
     alerta_atraso: bool = False
     atraso_etapa: Optional[str] = None     # "Diagnostico -> Estadiamento" | "Estadiamento -> Tratamento" etc.
 
