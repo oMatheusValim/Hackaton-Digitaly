@@ -1,6 +1,6 @@
 # comando para habilitar a chave da OpenAi
-#export OPENAI_API_KEY="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"
+## export OPENAI_API_KEY="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"
 
 # para habilitar a máquina virtual
-#python3 -m venv .venv
-#source .venv/bin/activate
+## python3 -m venv .venv
+## source .venv/bin/activate
