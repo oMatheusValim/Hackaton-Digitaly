@@ -28,7 +28,7 @@ def load_patients():
     
     # normaliza datas
     for col in ["diagnostico_data","cirurgia_data","quimioterapia_inicio","radioterapia_inicio","ultima_consulta","proxima_consulta"]:
-        df[col] = pd.to_datetime(df[col], errors="coerce", dayfirst=True)
+        df[col] = pd.to_datetime(df[col], errors="coerce", format="%Y-%m-%d")
 
     loaded = {}
     for _, r in df.iterrows():
