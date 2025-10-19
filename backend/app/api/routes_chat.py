@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List
-from app.db.local_store import get_patient
+from app.db.local_store import get_patient_by_id
 from app.chat_bot import gerar_resumo_medico
 import os
 
@@ -13,19 +13,19 @@ class ChatMessage(BaseModel):
     content: str
 
 class ChatRequest(BaseModel):
-    message: str
     patient_id: Optional[str] = None
-    history: Optional[List[ChatMessage]] = None  # opcional, para manter contexto no front
+    message: str
+    history: Optional[List[ChatMessage]] = None
 
 class ChatResponse(BaseModel):
     answer: str
-    used_llm: bool = False
+    used_llm: bool = True
 
 # ---------- Util ----------
 def _patient_context(patient_id: Optional[str]) -> str:
     if not patient_id:
         return ""
-    p = get_patient(patient_id)
+    p = get_patient_by_id(patient_id)
     if not p:
         raise HTTPException(404, "patient not found")
     return (
@@ -89,9 +89,23 @@ def gerar_resumo(req: ChatRequest):
     if not req.patient_id:
         raise HTTPException(400, "patient_id obrigatório")
 
-    p = get_patient(req.patient_id)
+    p = get_patient_by_id(req.patient_id)
     if not p:
         raise HTTPException(404, "patient not found")
 
     summary = gerar_resumo_medico(p.model_dump(), req.message)
     return {"summary": summary}
+
+@router.post("/analisar")
+def analisar_mensagem(req: ChatRequest):
+    # CORREÇÃO 1: Removida a vírgula para chamar a função corretamente
+    paciente = get_patient_by_id(req.patient_id)
+    
+    if not paciente:
+        raise HTTPException(404, f"Paciente {req.patient_id} não encontrado")
+
+    # CORREÇÃO 2: Convertido o objeto 'paciente' para um dicionário
+    # antes de passar para a função da LLM
+    resultado = gerar_resumo_medico(paciente.model_dump(), req.message)
+    
+    return resultado

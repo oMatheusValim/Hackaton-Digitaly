@@ -104,6 +104,8 @@ def all_patients() -> List[Patient]:
 def get_patient(pid: str) -> Patient | None:
     return _patients.get(pid)
 
+def get_patient_by_id(patient_id: str) -> Patient | None:
+    return get_patient(patient_id)
 
 def update_patient(pid: str, patch: dict) -> Patient | None:
     p = _patients.get(pid)
