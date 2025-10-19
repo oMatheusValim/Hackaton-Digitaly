@@ -1,9 +1,5 @@
 {
   "/page": "app/page.js",
-<<<<<<< HEAD
   "/dashboard/page": "app/dashboard/page.js",
   "/chat/medico/page": "app/chat/medico/page.js"
-=======
-  "/dashboard/page": "app/dashboard/page.js"
->>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
 }
