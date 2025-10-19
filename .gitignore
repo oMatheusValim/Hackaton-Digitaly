@@ -39,7 +39,7 @@ yarn-error.log*
 next-env.d.ts
 
 # Ambiente Virtual
-venv/
+.venv/
 backend/venv/
 
 # Cache do Python
@@ -49,3 +49,5 @@ __pycache__/
 # Arquivos de IDEs
 .idea/
 .vscode/
+
+infos para rodar.txt
