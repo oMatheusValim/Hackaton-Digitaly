@@ -15,7 +15,6 @@ class ChatMessage(BaseModel):
 class ChatRequest(BaseModel):
     patient_id: Optional[str] = None
     message: str
-    history: Optional[List[ChatMessage]] = None
 
 class ChatResponse(BaseModel):
     answer: str
@@ -93,20 +92,24 @@ def gerar_resumo(req: ChatRequest):
     if not p:
         raise HTTPException(404, "patient not found")
 
-    summary = gerar_resumo_medico(p.model_dump(), req.message)
-    return {"summary": summary}
+    summary_dict = gerar_resumo_medico(p.model_dump(), req.message)
+    
+    if "erro" in summary_dict:
+        raise HTTPException(500, f"Falha ao gerar o resumo: {summary_dict['erro']}")
+
+    return {"summary": summary_dict}
 
 @router.post("/analisar")
 def analisar_mensagem(req: ChatRequest):
-    # CORREÇÃO 1: Removida a vírgula para chamar a função corretamente
     paciente = get_patient_by_id(req.patient_id)
     
     if not paciente:
         raise HTTPException(404, f"Paciente {req.patient_id} não encontrado")
 
-    # CORREÇÃO 2: Convertido o objeto 'paciente' para um dicionário
-    # antes de passar para a função da LLM
-    resultado = gerar_resumo_medico(paciente.model_dump(), req.message)
+    # A função já retorna um dicionário, então podemos retorná-lo diretamente.
+    resultado_dict = gerar_resumo_medico(paciente.model_dump(), req.message)
+
+    if "erro" in resultado_dict:
+        raise HTTPException(500, f"Falha ao analisar a mensagem: {resultado_dict['erro']}")
     
-    return resultado
-    
+    return resultado_dict

@@ -25,7 +25,6 @@ def _days_diff(a, b):
 def load_patients():
     global _patients
 
-    # leitura do arquivo csv
     df = pd.read_csv(
         CSV_PATH,
         sep=None,            # autodetecta ; , ou \t
