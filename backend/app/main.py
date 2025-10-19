@@ -1,9 +1,11 @@
-from fastapi import FastAPI
 from app.db.local_store import load_patients
 from app.api import routes_patients  # <-- importa o router
+
+from dotenv import load_dotenv
+load_dotenv()
+
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI
-
 
 app = FastAPI(title="Chat Backend Oncologia")
 

@@ -49,3 +49,24 @@ def patch_patient(pid: str, patch: PatientPatch):
     if not p:
         raise HTTPException(404, "patient not found")
     return p
+
+@router.get("/search", response_model=List[Patient])
+def search_patients(
+    q: Optional[str] = Query(None, description="Busca por nome (contém)"),
+    cancer_type: Optional[str] = Query(None),
+    status: Optional[str] = Query(None),
+    only_delayed: bool = Query(False, description="Apenas com alerta_atraso=True"),
+    limit: int = Query(50, ge=1, le=200),
+    offset: int = Query(0, ge=0),
+):
+    pts = all_patients()
+    if q:
+        ql = q.lower()
+        pts = [p for p in pts if p.name and ql in p.name.lower()]
+    if cancer_type:
+        pts = [p for p in pts if (getattr(p.cancer, "type", None) or "").lower() == cancer_type.lower()]
+    if status:
+        pts = [p for p in pts if (getattr(p.care, "status", None) or "").lower() == status.lower()]
+    if only_delayed:
+        pts = [p for p in pts if getattr(p.flags, "alerta_atraso", False)]
+    return pts[offset: offset + limit]
