@@ -38,20 +38,41 @@ def search_patients(
     cancer_type: Optional[str] = Query(None),
     status: Optional[str] = Query(None),
     only_delayed: bool = Query(False, description="Apenas com alerta_atraso=True"),
+    sort: Optional[str] = Query(None, description="Campo para ordenação: name|age|next_visit"),
+    order: str = Query("asc", pattern="^(asc|desc)$"),
     limit: int = Query(50, ge=1, le=200),
     offset: int = Query(0, ge=0),
 ):
+    from datetime import date
     pts = all_patients()
+
     if q:
         ql = q.lower()
         pts = [p for p in pts if p.name and ql in p.name.lower()]
+
     if cancer_type:
-        pts = [p for p in pts if (getattr(p.cancer, "type", None) or "").lower() == cancer_type.lower()]
+        pts = [p for p in pts if cancer_type.lower() in (getattr(p.cancer, "type", "") or "").lower()]
+
     if status:
         pts = [p for p in pts if (getattr(p.care, "status", None) or "").lower() == status.lower()]
+
     if only_delayed:
         pts = [p for p in pts if getattr(p.flags, "alerta_atraso", False)]
+
+    # --- ordenação ---
+    keyfunc = None
+    if sort == "name":
+        keyfunc = lambda p: (p.name or "").lower()
+    elif sort == "age":
+        keyfunc = lambda p: (p.age if isinstance(p.age, int) else 10**9)
+    elif sort == "next_visit":
+        keyfunc = lambda p: (getattr(p.care, "next_visit", None) or date.max)
+
+    if keyfunc:
+        pts = sorted(pts, key=keyfunc, reverse=(order == "desc"))
+
     return pts[offset: offset + limit]
+
 
 #Lista simples
 @router.get("", response_model=List[Patient])
