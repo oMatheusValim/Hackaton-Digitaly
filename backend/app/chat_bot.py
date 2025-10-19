@@ -45,30 +45,39 @@ def gerar_resumo_medico(dados_paciente, mensagem_paciente):
 # -----------------------------------------------------------
 # Prompt de contexto e extração de informações
 # -----------------------------------------------------------
+# Altere a função montar_prompt_para_llm em chat_bot.py
+
 def montar_prompt_para_llm(dados_paciente, mensagem_paciente, alertas):
     """
     Monta o prompt detalhado que será enviado para a LLM.
     """
+    # Pegamos os dados específicos para usar na instrução
+    tipo_cancer = dados_paciente.get('tipo_cancer', 'desconhecido')
+    estadiamento = dados_paciente.get('estadiamento', 'desconhecido')
+    sintoma_principal = mensagem_paciente # Simplificação para o prompt
+
     prompt = f"""
     **Contexto do Paciente:**
     - ID: {dados_paciente.get('patient_id')} 
-    - Nome: {dados_paciente.get('nome_paciente', 'N/A')}
-    - Idade: {dados_paciente.get('idade', 'N/A')}
-    - Tipo de Câncer: {dados_paciente.get('tipo_cancer', 'N/A')}
-    - Estadiamento: {dados_paciente.get('estadiamento', 'N/A')}
-    - Alertas de Atraso na Jornada: {' '.join(alertas) if alertas else 'Nenhum atraso identificado.'}
+    - Tipo de Câncer: {tipo_cancer}
+    - Estadiamento: {estadiamento}
+    - Outros dados: {dados_paciente}
 
     **Mensagem do Paciente:**
     "{mensagem_paciente}"
 
     **Sua Tarefa:**
-    Você é um assistente que organiza informações clínicas para médicos oncologistas. 
+    Você é um assistente que organiza informações para médicos oncologistas. 
     Analise a mensagem e o contexto e retorne **apenas** um objeto JSON com os seguintes campos:
 
     {{
-        "sintomas": [lista de sintomas mencionados],
-        "pontos_relevantes": [lista de outros pontos importantes, como exames, efeitos colaterais, dúvidas, etc.],
-        "sugestao_plano_acao": [2 ou 3 perguntas objetivas que o médico pode fazer],
+        "sintomas": [lista de todos os sintomas mencionados],
+        "pontos_relevantes": [lista de outros pontos importantes da mensagem],
+        "sugestao_plano_acao": [
+            "ANÁLISE CRÍTICA: O paciente tem {tipo_cancer} (estágio {estadiamento}) e relatou '{sintoma_principal}'. 
+            Com base nesta conexão específica, formule 2 a 3 perguntas investigativas que um oncologista faria 
+            para diferenciar uma emergência de um efeito colateral comum, considerando o diagnóstico principal."
+        ],
         "nivel_urgencia": "Baixa" | "Média" | "Alta"
     }}
 
