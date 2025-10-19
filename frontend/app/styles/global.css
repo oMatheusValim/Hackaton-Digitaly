@@ -1,0 +1,259 @@
+/* ==================================== */
+/* ESTILOS GERAIS E BASE */
+/* ==================================== */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f9;
+}
+
+.titulo-chat {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+/* ==================================== */
+/* DASHBOARD STYLES */
+/* ==================================== */
+.dashboard-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.indicadores-alerta h2 {
+    color: #333;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.card-paciente-alerta {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    font-size: 0.95em;
+}
+
+/* ALERTA CRÍTICO (DESTAQUE VISUAL) */
+.alerta-critico {
+    background-color: #ffdddd; /* Vermelho claro */
+    border-left: 5px solid #dc3545; /* Linha vermelha de destaque */
+    color: #dc3545; /* Texto em vermelho */
+    font-weight: bold;
+}
+
+.paciente-ok {
+    background-color: #e6ffed; /* Verde claro para OK */
+    border-left: 5px solid #28a745;
+    color: #28a745;
+}
+
+.paciente-nome {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.2em;
+}
+
+.navegacao-link {
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+/* ==================================== */
+/* CHAT MÉDICO STYLES (2 COLUNAS) */
+/* ==================================== */
+.main-chat-layout {
+    display: flex; 
+    max-width: 1200px;
+    margin: 20px auto;
+    gap: 20px;
+    height: 80vh; 
+}
+
+/* COLUNA ESQUERDA: Resumo */
+.resumo-paciente-panel {
+    width: 35%; 
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+.resumo-paciente-panel h2 {
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.resumo-card {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border-left: 5px solid #ccc;
+}
+
+/* Reutiliza .alerta-critico para destaque no resumo */
+
+
+/* COLUNA DIREITA: Chat */
+.interface-chat {
+    width: 65%; 
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.historico-mensagens {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #e9eef3; 
+}
+
+/* Base de Mensagens */
+.mensagem {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 15px;
+    max-width: 70%;
+    align-self: flex-start; /* ALINHAMENTO PADRÃO: ESQUERDA (Mensagens de Terceiros) */
+}
+
+/* MÉDICO: Define apenas a cor e o padrão ESQUERDA */
+.medico {
+    background-color: #d1ecf1;
+}
+
+/* PACIENTE: Define apenas a cor e o padrão ESQUERDA */
+.paciente {
+    background-color: #c3e6cb;
+}
+
+/* CLASSE UNIVERSAL PARA QUEM ESTÁ DIGITANDO NA TELA (SENDER) */
+/* Esta classe deve ser adicionada no JavaScript, dependendo do usuário logado */
+.user-message {
+    align-self: flex-end; /* SOBRESCREVE o flex-start para ir para a DIREITA */
+    margin-left: auto; /* Garante que flutue para a extrema direita */
+}
+
+.lista_sintomas {
+    padding-left: 10px ;
+}
+
+.input-mensagem-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.input-chat {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.enviar-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* ==================================== */
+/* CHAT PACIENTE STYLES (1 COLUNA) */
+/* ==================================== */
+.chat-view-container-paciente {
+    max-width: 800px; 
+    margin: 20px auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.interface-chat-paciente {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.historico-mensagens-paciente {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #f7f9fc;
+}
+
+.input-mensagem-area-paciente {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+/* ESTILOS DA BARRA DE FILTRO (DASHBOARD) */
+/* ==================================== */
+.filtro-barra {
+    display: flex;
+    gap: 20px;
+    padding: 15px;
+    margin-bottom: 25px;
+    background-color: #f0f8ff; /* Um fundo azul claro para destacar */
+    border: 1px solid #cce5ff;
+    border-radius: 8px;
+    flex-wrap: wrap; 
+}
+
+.filtro-campo {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.filtro-campo label {
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #004085;
+}
+
+.filtro-barra input[type="text"],
+.filtro-barra select {
+    padding: 8px;
+    border: 1px solid #b8daff;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.nenhum-resultado {
+    text-align: center;
+    padding: 20px;
+    color: #6c757d;
+    font-style: italic;
+    border: 1px dashed #ccc;
+    border-radius: 4px;
+}
