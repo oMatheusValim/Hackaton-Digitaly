@@ -11,6 +11,7 @@ exports.id = "vendor-chunks/@swc";
 exports.ids = ["vendor-chunks/@swc"];
 exports.modules = {
 
+<<<<<<< HEAD
 /***/ "(pages-dir-node)/./node_modules/@swc/helpers/cjs/_interop_require_default.cjs":
 /*!********************************************************************!*\
   !*** ./node_modules/@swc/helpers/cjs/_interop_require_default.cjs ***!
@@ -31,6 +32,8 @@ eval("\n\nfunction _getRequireWildcardCache(nodeInterop) {\n    if (typeof WeakM
 
 /***/ }),
 
+=======
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
 /***/ "(rsc)/./node_modules/@swc/helpers/esm/_interop_require_default.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@swc/helpers/esm/_interop_require_default.js ***!

@@ -1,6 +1,7 @@
 /*!*******************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[10].use[3]!./app/styles/global.css ***!
   \*******************************************************************************************************************************************************************************************************************************************************************/
+<<<<<<< HEAD
 /* No topo do seu frontend/app/styles/global.css */
 
 :root {
@@ -26,6 +27,11 @@
 
 }
 
+=======
+/* ==================================== */
+/* ESTILOS GERAIS E BASE */
+/* ==================================== */
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -36,10 +42,20 @@ body {
 .titulo-chat {
     text-align: center;
     padding: 10px 0;
+<<<<<<< HEAD
     background-color: #080a31;
     border-bottom: 1px solid #ddd;
 }
 
+=======
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+/* ==================================== */
+/* DASHBOARD STYLES */
+/* ==================================== */
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
 .dashboard-container {
     padding: 20px;
     max-width: 1000px;
@@ -110,7 +126,11 @@ body {
 .resumo-paciente-panel {
     width: 35%; 
     padding: 15px;
+<<<<<<< HEAD
     background-color: #09113d;
+=======
+    background-color: #fff;
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
@@ -118,13 +138,21 @@ body {
 
 .resumo-paciente-panel h2 {
     color: #007bff;
+<<<<<<< HEAD
     border-bottom: 2px solid #34a598;
+=======
+    border-bottom: 2px solid #007bff;
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
     padding-bottom: 5px;
     margin-bottom: 15px;
 }
 
 .resumo-card {
+<<<<<<< HEAD
     background-color: #34a598;
+=======
+    background-color: #f9f9f9;
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 6px;
@@ -139,7 +167,11 @@ body {
     width: 65%; 
     display: flex;
     flex-direction: column;
+<<<<<<< HEAD
     background-color: var(--cor_bakground__envio_chat);
+=======
+    background-color: #fff;
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -148,7 +180,11 @@ body {
     flex-grow: 1;
     padding: 15px;
     overflow-y: auto;
+<<<<<<< HEAD
     background-color: #34a598; 
+=======
+    background-color: #e9eef3; 
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
 }
 
 /* Base de Mensagens */
@@ -162,14 +198,22 @@ body {
 
 /* MÉDICO: Define apenas a cor e o padrão ESQUERDA */
 .medico {
+<<<<<<< HEAD
     background-color: #111058;
     color: white;
+=======
+    background-color: #d1ecf1;
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
 }
 
 /* PACIENTE: Define apenas a cor e o padrão ESQUERDA */
 .paciente {
+<<<<<<< HEAD
     background-color: #32318c;
     color: #ffffff;
+=======
+    background-color: #c3e6cb;
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
 }
 
 /* CLASSE UNIVERSAL PARA QUEM ESTÁ DIGITANDO NA TELA (SENDER) */
@@ -206,6 +250,12 @@ body {
     cursor: pointer;
 }
 
+<<<<<<< HEAD
+=======
+/* ==================================== */
+/* CHAT PACIENTE STYLES (1 COLUNA) */
+/* ==================================== */
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
 .chat-view-container-paciente {
     max-width: 800px; 
     margin: 20px auto;
@@ -236,12 +286,21 @@ body {
     border-top: 1px solid #ddd;
 }
 
+<<<<<<< HEAD
+=======
+/* ESTILOS DA BARRA DE FILTRO (DASHBOARD) */
+/* ==================================== */
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
 .filtro-barra {
     display: flex;
     gap: 20px;
     padding: 15px;
     margin-bottom: 25px;
+<<<<<<< HEAD
     background-color: #f0f8ff;
+=======
+    background-color: #f0f8ff; /* Um fundo azul claro para destacar */
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
     border: 1px solid #cce5ff;
     border-radius: 8px;
     flex-wrap: wrap; 

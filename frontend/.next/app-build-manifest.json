@@ -21,6 +21,7 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/dashboard/page.js"
+<<<<<<< HEAD
     ],
     "/chat/medico/layout": [
       "static/chunks/webpack.js",
@@ -31,6 +32,8 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/chat/medico/page.js"
+=======
+>>>>>>> 1ee480a34caaeaf24c204da015444f5c7a332c8d
     ]
   }
 }
