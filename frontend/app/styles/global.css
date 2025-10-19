@@ -1,6 +1,28 @@
-/* ==================================== */
-/* ESTILOS GERAIS E BASE */
-/* ==================================== */
+/* No topo do seu frontend/app/styles/global.css */
+
+:root {
+  /* Cores Principais */
+  --cor-primaria: #007bff;
+  --cor-perigo: #dc3545;
+  --cor-sucesso: #28a745;
+
+  /* Cores de Fundo */
+  --cor-fundo-geral: #f4f7f9;
+  --cor-fundo-chat: #dde5ee;
+  --cor-fundo-card: #ffffff;
+  
+  /* Cores dos Balões de Chat */
+  --cor-balao-medico: var(--cor-primaria); /* Uma variável pode usar outra! */
+  --cor-balao-paciente: #e9ecef;
+
+  /* Cores de Texto */
+  --cor-texto-claro: #ffffff;
+  --cor-texto-escuro: #333;
+
+  --cor_bakground_envio_chat: rgb(98, 47, 47);
+
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,13 +33,10 @@ body {
 .titulo-chat {
     text-align: center;
     padding: 10px 0;
-    background-color: #fff;
+    background-color: #080a31;
     border-bottom: 1px solid #ddd;
 }
 
-/* ==================================== */
-/* DASHBOARD STYLES */
-/* ==================================== */
 .dashboard-container {
     padding: 20px;
     max-width: 1000px;
@@ -88,7 +107,7 @@ body {
 .resumo-paciente-panel {
     width: 35%; 
     padding: 15px;
-    background-color: #fff;
+    background-color: #09113d;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
@@ -96,13 +115,13 @@ body {
 
 .resumo-paciente-panel h2 {
     color: #007bff;
-    border-bottom: 2px solid #007bff;
+    border-bottom: 2px solid #34a598;
     padding-bottom: 5px;
     margin-bottom: 15px;
 }
 
 .resumo-card {
-    background-color: #f9f9f9;
+    background-color: #34a598;
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 6px;
@@ -117,7 +136,7 @@ body {
     width: 65%; 
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: var(--cor_bakground__envio_chat);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -126,7 +145,7 @@ body {
     flex-grow: 1;
     padding: 15px;
     overflow-y: auto;
-    background-color: #e9eef3; 
+    background-color: #34a598; 
 }
 
 /* Base de Mensagens */
@@ -140,12 +159,14 @@ body {
 
 /* MÉDICO: Define apenas a cor e o padrão ESQUERDA */
 .medico {
-    background-color: #d1ecf1;
+    background-color: #111058;
+    color: white;
 }
 
 /* PACIENTE: Define apenas a cor e o padrão ESQUERDA */
 .paciente {
-    background-color: #c3e6cb;
+    background-color: #32318c;
+    color: #ffffff;
 }
 
 /* CLASSE UNIVERSAL PARA QUEM ESTÁ DIGITANDO NA TELA (SENDER) */
@@ -182,9 +203,6 @@ body {
     cursor: pointer;
 }
 
-/* ==================================== */
-/* CHAT PACIENTE STYLES (1 COLUNA) */
-/* ==================================== */
 .chat-view-container-paciente {
     max-width: 800px; 
     margin: 20px auto;
@@ -215,14 +233,12 @@ body {
     border-top: 1px solid #ddd;
 }
 
-/* ESTILOS DA BARRA DE FILTRO (DASHBOARD) */
-/* ==================================== */
 .filtro-barra {
     display: flex;
     gap: 20px;
     padding: 15px;
     margin-bottom: 25px;
-    background-color: #f0f8ff; /* Um fundo azul claro para destacar */
+    background-color: #f0f8ff;
     border: 1px solid #cce5ff;
     border-radius: 8px;
     flex-wrap: wrap; 
