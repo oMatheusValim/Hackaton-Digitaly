@@ -109,3 +109,4 @@ def analisar_mensagem(req: ChatRequest):
     resultado = gerar_resumo_medico(paciente.model_dump(), req.message)
     
     return resultado
+    

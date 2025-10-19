@@ -101,6 +101,7 @@ def calcular_alertas_jornada(dados_paciente):
             continue
 
     if not datas_tratamento and (hoje - data_diagnostico > limite_dias):
+
         alertas.append(
             f"Atenção: paciente diagnosticado há {(hoje - data_diagnostico).days} dias sem início de tratamento registrado."
         )
