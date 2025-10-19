@@ -70,3 +70,12 @@ def search_patients(
     if only_delayed:
         pts = [p for p in pts if getattr(p.flags, "alerta_atraso", False)]
     return pts[offset: offset + limit]
+
+@router.get("/cancer-types", response_model=List[str])
+def list_cancer_types():
+    tipos = set()
+    for p in all_patients():
+        t = getattr(getattr(p, "cancer", None), "type", None)
+        if t:
+            tipos.add(str(t).strip())
+    return sorted(tipos, key=str.casefold)
